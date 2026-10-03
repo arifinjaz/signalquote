@@ -1,0 +1,50 @@
+{
+  "name": "signalquote",
+  "version": "0.1.0",
+  "description": "Quote the monthly cost of a logs, metrics, and traces plan before you ship it.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "sre",
+    "aiops",
+    "finops",
+    "observability",
+    "opentelemetry",
+    "datadog",
+    "grafana",
+    "cardinality",
+    "logging"
+  ],
+  "bin": {
+    "signalquote": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && mkdir -p dist/catalog && cp src/catalog/rates.json dist/catalog/rates.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3",
+    "vitest": "^5.0.3"
+  }
+}

@@ -1,0 +1,25 @@
+service: catalog
+team: browse
+hosts: 8
+budgetUsdMonth: 300
+metrics:
+  - name: catalog.search
+    type: counter
+    purpose: traffic
+    intervalSeconds: 60
+    labels:
+      - name: http.route
+        cardinality: 6
+        bounded: true
+      - name: http.status_code
+        cardinality: 4
+        bounded: true
+logs:
+  - name: catalog.debug
+    eventsPerSecond: 200
+    avgBytes: 900
+    level: debug
+    indexRatio: 1
+    retentionDays: 15
+    attributes:
+      - name: user.email

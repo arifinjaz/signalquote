@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "asOf": "2026-10-02",
+  "notes": "List prices checked on asOf. To change a rate: edit the number, set asOf to the day you opened the vendor page, and bump version. If a vendor has not published a unit price, do not invent one. Datadog also publishes month-to-month index rates between the annual and on-demand columns; this file stores those two. Honeycomb time-series data points have no public overage price here.",
+  "sources": {
+    "datadogList": {
+      "title": "Datadog pricing list",
+      "url": "https://www.datadoghq.com/pricing/list/"
+    },
+    "datadogMetrics": {
+      "title": "Datadog custom metrics billing",
+      "url": "https://docs.datadoghq.com/account_management/billing/custom_metrics/"
+    },
+    "datadogApm": {
+      "title": "Datadog APM billing",
+      "url": "https://docs.datadoghq.com/account_management/billing/apm_tracing_profiler/"
+    },
+    "grafanaPricing": {
+      "title": "Grafana Cloud pricing",
+      "url": "https://grafana.com/pricing/"
+    },
+    "grafanaMetrics": {
+      "title": "Grafana Cloud metrics pricing",
+      "url": "https://grafana.com/docs/grafana-cloud/platform/pricing-and-usage/metrics/"
+    },
+    "grafanaInvoice": {
+      "title": "Grafana Cloud logs, traces, and profiles invoices",
+      "url": "https://grafana.com/docs/grafana-cloud/cost-management-and-billing/manage-invoices/understand-your-invoice/logs-invoice/"
+    },
+    "newRelic": {
+      "title": "New Relic pricing",
+      "url": "https://newrelic.com/pricing"
+    },
+    "honeycomb": {
+      "title": "Honeycomb Pro plan changes (July 2026)",
+      "url": "https://docs.honeycomb.io/get-started/honeycomb/2026-pro-plan-changes"
+    },
+    "honeycombPricing": {
+      "title": "Honeycomb pricing",
+      "url": "https://www.honeycomb.io/pricing"
+    },
+    "cloudwatch": {
+      "title": "Amazon CloudWatch pricing (US East, N. Virginia examples)",
+      "url": "https://aws.amazon.com/cloudwatch/pricing/"
+    }
+  },
+  "datadog": {
+    "usdPerHundredCustomMetrics": 5,
+    "usdPerHundredIngestedCustomMetrics": 0.1,
+    "logIngestUsdPerGb": 0.1,
+    "spanIngestUsdPerGb": 0.1,
+    "indexedAllowancePerHost": { "pro": 100, "enterprise": 200 },
+    "spanIngestAllowanceGbPerHost": 150,
+    "spanIndexAllowancePerHost": 1000000,
+    "indexUsdPerMillionEvents": {
+      "3": { "annual": 1.06, "onDemand": 1.59 },
+      "7": { "annual": 1.27, "onDemand": 1.91 },
+      "15": { "annual": 1.7, "onDemand": 2.55 },
+      "30": { "annual": 2.5, "onDemand": 3.75 }
+    }
+  },
+  "grafana": {
+    "seriesTiers": [
+      { "upTo": 10000, "usdPerThousand": 0 },
+      { "upTo": 100000, "usdPerThousand": 6.5 },
+      { "upTo": 200000, "usdPerThousand": 5.9 },
+      { "upTo": null, "usdPerThousand": 5.5 }
+    ],
+    "processUsdPerGb": 0.05,
+    "writeUsdPerGb": 0.4,
+    "retainUsdPerGbPer30Days": 0.1,
+    "includedGb": 50,
+    "includedSeries": 10000,
+    "includedDpm": 1
+  },
+  "newRelic": {
+    "usdPerGb": 0.4,
+    "includedGb": 100,
+    "dataPlusUsdPerGb": 0.6
+  },
+  "honeycomb": {
+    "usdPerMillionEvents": 3,
+    "freeEvents": 20000000,
+    "proMinimumUsd": 150
+  },
+  "cloudwatch": {
+    "metricTiers": [
+      { "upTo": 10000, "usdEach": 0.3 },
+      { "upTo": 250000, "usdEach": 0.1 },
+      { "upTo": 1000000, "usdEach": 0.05 },
+      { "upTo": null, "usdEach": 0.02 }
+    ],
+    "logIngestUsdPerGb": 0.5,
+    "logIngestFreeGb": 5,
+    "logStorageUsdPerGbMonth": 0.03
+  }
+}

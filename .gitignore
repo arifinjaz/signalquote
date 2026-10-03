@@ -1,0 +1,13 @@
+node_modules
+agent-tools
+dist
+.next
+out
+coverage
+.DS_Store
+*.tsbuildinfo
+.vercel
+.env*
+docs/internal/
+npm-debug.log*
+.pnpm-debug.log*

@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run build -w signalquote
+      - run: npm test
+      - name: CLI smoke test (the bomb fails, the fix passes)
+        run: |
+          set +e
+          node packages/signalquote/dist/cli.js check examples/checkout-bomb.yaml --vendor datadog
+          code=$?
+          test "$code" -eq 1 || { echo "expected exit 1, got $code"; exit 1; }
+          node packages/signalquote/dist/cli.js check examples/checkout-fixed.yaml --vendor datadog
+          code=$?
+          test "$code" -eq 0 || { echo "expected exit 0, got $code"; exit 1; }
+      - run: npm pack --dry-run -w signalquote

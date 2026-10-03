@@ -1,0 +1,46 @@
+service: checkout
+team: payments
+hosts: 10
+budgetUsdMonth: 200
+metrics:
+  - name: checkout.requests
+    type: counter
+    purpose: traffic
+    intervalSeconds: 60
+    labels:
+      - name: http.route
+        cardinality: 40
+        bounded: true
+      - name: http.status_code
+        cardinality: 5
+        bounded: true
+      - name: user_id
+        cardinality: 20000
+  - name: checkout.duration
+    type: histogram
+    purpose: latency
+    buckets: 12
+    intervalSeconds: 60
+    labels:
+      - name: http.route
+        cardinality: 40
+        bounded: true
+      - name: http.status_code
+        cardinality: 5
+        bounded: true
+logs:
+  - name: checkout.access
+    eventsPerSecond: 30
+    avgBytes: 700
+    level: info
+    indexRatio: 1
+    retentionDays: 15
+    attributes:
+      - name: user.email
+spans:
+  - name: checkout.charge
+    spansPerSecond: 80
+    avgBytes: 2000
+    indexRatio: 1
+    retentionDays: 15
+    hasTraceId: true

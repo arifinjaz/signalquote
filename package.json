@@ -1,0 +1,15 @@
+{
+  "name": "signalquote-workspace",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run build -w signalquote && npm run dev -w web",
+    "test": "npm test -w signalquote",
+    "build": "npm run build -w signalquote && npm run build -w web",
+    "lint": "npm run lint -w web",
+    "start": "npm run start -w web -- -p 43123 -H 0.0.0.0"
+  }
+}
