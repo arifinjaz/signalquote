@@ -46,5 +46,14 @@
     "@types/node": "^22.15.21",
     "typescript": "^5.8.3",
     "vitest": "^5.0.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arifinjaz/signalquote.git",
+    "directory": "packages/signalquote"
+  },
+  "homepage": "https://github.com/arifinjaz/signalquote#readme",
+  "bugs": {
+    "url": "https://github.com/arifinjaz/signalquote/issues"
+  },
 }
