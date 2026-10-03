@@ -4,7 +4,14 @@ The telemetry invoice, before you ship it.
 
 signalquote is a TypeScript library and a CLI in this repository. You describe the logs, metrics, and spans a service will emit. It quotes the month on Datadog, Grafana Cloud, New Relic, Honeycomb, and CloudWatch, using each vendor's own meter, and it names the label that multiplied the series.
 
-The package is not on npm yet, so `npm install signalquote` will fail until it is published. From this repo, `npm install` then `npm test`. There is no hosted playground. `npm run dev` serves one at http://127.0.0.1:43123.
+Install it from npm and gate a plan in CI or locally:
+
+```bash
+npm install signalquote
+npx signalquote check plan.yaml --vendor datadog
+```
+
+There is no hosted playground. From this repo, `npm install` then `npm run dev` serves one at http://127.0.0.1:43123.
 
 signalquote is not affiliated with Datadog, Grafana Labs, New Relic, Honeycomb, or Amazon Web Services. MIT licensed: [LICENSE](LICENSE).
 
@@ -81,7 +88,7 @@ A plan is a YAML file you can diff in a pull request. The same plan is priced fi
 
 - Datadog bills **custom-metric series**, with a per-host allotment, and bills **log ingest and log index** as different meters. Span ingest and indexed spans are different meters too.
 - Grafana Cloud bills **active series and data points per minute**. A 15-second scrape is four times the metrics line of a 60-second scrape. A classic histogram counts finite buckets plus the +Inf bucket, `_sum`, and `_count`.
-- New Relic bills **gigabytes** after the included allowance.
+- New Relic bills **gigabytes** after the included allowance. New Relic samples are sized at 150 bytes each, an assumption you can override.
 - Honeycomb bills **events**. A `user_id` field does not create a new series. Time-series data points have a separate allotment and no public overage price in this catalog, so they are counted and not converted to dollars.
 - CloudWatch bills **custom-metric tiers** (US East list prices) and standard log ingest plus storage.
 
